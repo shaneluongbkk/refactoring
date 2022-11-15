@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" ></script>
+    <title>Login</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0px;
+            background: linear-gradient(119deg, #A46EE8, #DEB9FC);
+        }
+
+        #regis {
+            background: linear-gradient(119deg, #A46EE8, #DEB9FC);
+            height: 30px;
+            font-size: 15px;
+            color: #fff;
+        }
+
+        #regis:hover {
+            background: linear-gradient(-119deg, #A46EE8, #DEB9FC);
+            color: rgb(15, 103, 219);
+        }
+
+        #guest {
+            color: grey;
+            background-color: #fff;
+            font-size: 15px;
+        }
+
+        #guest:hover {
+            color: rgb(15, 59, 237);
+            background-color: #fff;
+        }
+
+        .frame {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+        }
+                
+        .frame .title {
+            font-size: 30px;
+            font-weight: 500;
+            position: relative;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #2d08ce, #c61c8d);
+            margin-bottom: 10px;
+        }
+
+        .frame .button {
+            height: 50px;
+            width: 100%;
+        }
+
+        .frame .button input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 5px;
+            letter-spacing: 1px;
+            background: linear-gradient(119deg, #2d08ce, #c61c8d);
+        }
+
+        .frame .button input:hover {
+            background: linear-gradient(-119deg, #2d08ce, #c61c8d);
+        }
+
+        .frame .guest:hover {
+            color: blue;
+        }
+        
+    </style>
+</head>
+
+<body> 
+
+    <div class="frame">
+        <div class="title">Login</div>
+        <input type="text" placeholder="Username" id="username" class="form-control mb-3" required>
+        <input type="password" placeholder="Password" id="password" class="form-control mb-3" required>
+        <div class="form-check form-switch mb-3" >
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Remember Me</label>
+          </div>
+        <div class="button">
+            <input type="submit" id="sub_btn" value="Sign In">
+        </div>
+        <a style="text-decoration: none;" href="registration.html" class="badge badge-secondary py-1 w-100" id="regis">Create a new account</a>
+        <a style="text-decoration: none;" href="topic1.html" class="badge badge-secondary py-1 w-100" id="guest">Continue as Guest?</a>
+
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+        import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyAsGhLXBEg3g2rcUapvRINT-fMrnOKisMc",
+          authDomain: "refactoring3444.firebaseapp.com",
+          databaseURL: "https://refactoring3444-default-rtdb.firebaseio.com",
+          projectId: "refactoring3444",
+          storageBucket: "refactoring3444.appspot.com",
+          messagingSenderId: "842103719369",
+          appId: "1:842103719369:web:f73954e9fa5a6f698f1418",
+          measurementId: "G-RKKSDLN3P7"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+
+        // User Information
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
+        const submit = document.getElementById('sub_btn');
+
+        function isItEmpty(str) {
+            return str == null || str.match(/^ *$/) !== null;
+        }
+
+        // Authentication
+        function AuthenticateUser() {
+            // All fields are required
+            if(isItEmpty(username.value) || isItEmpty(password.value)){
+                alert("All fields are required!");
+                return false;
+            }
+
+            const dbRef = ref(db);
+
+            get(child(dbRef, "UsersList/" + username.value)).then((snapshot) => {
+                if(snapshot.exists()) {
+                    let dbpass = decryptPassword(snapshot.val().password);
+                    if(dbpass == password.value) {
+                        login(snapshot.val());
+                    } else {
+                        alert("User does not exist");
+                    }
+                }
+                else {
+                    alert("Username or password is invalid");
+
+                }
+            });
+        }
+
+        // Decrypt the password for security 
+        function decryptPassword(dbpass) {
+            var ePass = CryptoJS.AES.decrypt(dbpass, password.value);
+            return ePass.toString(CryptoJS.enc.Utf8);
+        }
+
+        // Login
+        function login(user) {
+            let rememberMe = document.getElementById('flexSwitchCheckDefault').checked;
+
+            if(!rememberMe) {
+                sessionStorage.setItem('user', JSON.stringify(user));
+                window.location = "topic1.html";
+            } else {
+                localStorage.setItem('rememberMe', 'yes');
+                localStorage.setItem('user', JSON.stringify(user));
+                window.location = "topic1.html";
+            }
+        }
+
+        // Submit Button
+        submit.addEventListener('click', AuthenticateUser);
+
+      </script>
+
+</body>
+</html>

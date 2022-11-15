@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width", initial-scale="1.0"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+   margin: 0;
+   font-family: Arial;
+}
+
+.header{
+   background-color: #DED9FC;
+   padding: 60px; 
+   text-align: right;
+}
+
+.header .account1 {
+   background-color: #A46EE8;
+   color: #000;
+   border-radius: 10px;
+   padding: 20px;
+   font-size: 20px;
+}
+
+.header .account2 {
+   background-color: #DEB9FC;
+   color: #000;
+   border-radius: 10px;
+   padding: 20px;
+   font-size: 20px;
+}
+       
+.navbar{
+    background-color: #DED9FC ;
+    overflow: hidden;
+    position: sticky; 
+    top: 0;
+    text-align: center;
+    z-index: 1;
+}   
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 37px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    color: #A46EE8;
+}
+
+.navbar a.active {
+    background-color: #A46EE8;
+    color: white;
+}
+
+/*Hide the hmaburger icon*/
+.navbar .icon{
+   display: none;
+}
+
+.navbar li{
+   display: inline;
+}
+
+/*Add media quesries for responsive navigation bar*/
+@media screen and (max-width: 1000px){
+   .navbar a {display: none;}
+   .navbar a.icon{
+      float: right;
+      display: block;
+   }
+  } 
+
+  @media screen and (max-width: 1000px){
+   .navbar.responsive {position: relative;}
+   .navbar.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+   }
+   .navbar.responsive a{
+      float: none;
+      display: block;
+      text-align: left;
+   }
+  }
+
+  .toc_container{
+    position: sticky;
+    top: 5.5rem;
+    left: 0;
+    width: 23%;
+    height: 40rem;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: grey;
+    scrollbar-width: thin;
+  }
+
+  .title{
+    font-size: 38px;
+    text-align: left;
+  }
+
+  .title_list{
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .title_list a{
+    color: black; 
+    text-decoration: none;
+    display: block;
+  }
+
+  .title_list a:hover{
+    color: gray;
+  }
+
+  .title_list a.active{
+    color:  #A46EE8;
+  }
+
+  .content_box{
+    position: relative;
+    top: -40rem;
+    left: 25%;
+    width: 75%;
+    z-index: 0;
+  }
+
+  .paragraph{
+   font-size: 22px;
+   text-align: left;
+   padding-right: 15rem;
+   font-family:'Times New Roman', Times, serif;
+  }
+
+  hr.line{
+   margin-right: 8vw;
+   border-top: 1px solid black;
+  }
+
+  /*Do not display the open button for large screen*/
+  @media screen and (min-width: 1000px) {
+   .overlay_icon a {display: none;}
+  }
+
+  @media screen and (max-width: 1000px) {
+   .toc_container {display: none;}
+   .content_box {
+     position: relative;
+     left: 10vw;
+     top: 5vw;
+   }
+   .title {font-size: 35px;}
+   .paragraph {
+      font-size: 20px;
+      padding-right: 5vw;
+   }
+  }
+
+  .overlay_icon a{
+      position: relative;
+      top: 0;
+      left: 0;
+      font-size: 35px;
+      color: grey;
+   }
+
+   .overlay_icon a:hover {
+      color: black;
+   }
+
+  .overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+@media screen and (max-width: 1000px){
+   .account1 { display: none;}
+   .account2 { display: none;}
+}
+
+    </style>
+    </head>
+    <body>
+         
+        <header class="header">
+            <a id="userlink" class="account1" href="">Username</a>
+            <a id="signoutlink" class="account2" href="">Sign Out</a>
+        </header>
+        <div class="navbar" id="myNavbar">
+           <ul>
+              <li><a href="./home.html">Home</a></li>
+              <li><a href="./quiz.html">Quiz</a></li>
+              <li><a href="./flashcard1.html">Flashcard</a></li>
+              <li><a href="./q&a.html">Q&A</a></li>
+              <li><a href="#contact">Contact us</a></li>
+              <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                 <i class="fa fa-bars"></i></a></li>
+           </ul>
+        </div>
+        
+        <nav id="myTable" class="toc_container">
+            <ul style="list-style-type: none;" class="title_list">
+                <li><a href="./topic1.html" class="active">Title 1</a></li>
+                <li><a href="./topic2.html">Title 2</a></li>
+                <li><a href="./topic3.html">Title 3</a></li>
+                <li><a href="./topic4.html">Title 4</a></li>
+                <li><a href="./topic5.html">Title 5</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Title 6</a></li>
+            </ul>
+        </nav>
+
+
+        <!--Full screen overlay menu for responsiveness-->
+        <div class="overlay_icon">
+         <a href="javascript:void(0)"onclick="openNav()">
+            <i class="fa fa-chevron-circle-right"></i></a>
+        </div>
+
+        <div id="myOverlay" class="overlay">
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <div class="overlay-content">
+            <a href="./topic1.html" class="active">Title 1</a></li>
+            <a href="./topic2.html">Title 2</a>
+            <a href="./topic3.html">Title 3</a>
+            <a href="./topic4.html">Title 4</a>
+            <a href="./topic5.html">Title 5</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+            <a href="./topic6.html">Title 6</a>
+         </div>
+       </div>
+
+
+        <!--Main content-->
+        <div class="content_box">
+         <h1 class="title">Title 1</h1>
+         <p class="paragraph" style="font-style:italic">Last updated: 10/21/2022</p>
+         <hr class="line">
+         <p class="paragraph">
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+            <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</br>
+         </p>
+        </div>
+
+        
+        <script>
+           function myFunction() { 
+              var x = document.getElementById("myNavbar");
+              if (x.className === "navbar") {
+                 x.className += " responsive";
+              }
+              else {
+                 x.className = "navbar";
+              }
+           }
+
+           function openNav() {
+            document.getElementById("myOverlay").style.width = "100%";
+           }
+
+           function closeNav() {
+            document.getElementById("myOverlay").style.width = "0%";
+           }
+
+           // References
+        let userLink = document.getElementById('userlink');
+        let signoutLink = document.getElementById('signoutlink');
+        let header = document.getElementById('hh');
+        var currentUser = null;
+
+        // Functions
+        function getUsername() {
+            let rememberMe = localStorage.getItem("rememberMe");
+
+            if(rememberMe == "yes") {
+                currentUser = JSON.parse(localStorage.getItem('user'));
+            } else {
+                currentUser = JSON.parse(sessionStorage.getItem('user'));
+            }
+        }
+
+        function Signout() {
+            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location = "topic1.html";
+        }
+
+        // Window refreshes
+        window.onload = function() {
+            getUsername();
+            if(currentUser == null) {
+                userLink.innerText = "Register";
+                userLink.classList.replace("account1", "account1");
+                userLink.href = "registration.html";
+
+                signoutLink.innerText = "Login";
+                signoutLink.classList.replace("account2", "account2");
+                signoutLink.href = "login.html";
+            } else {
+                userLink.innerText = currentUser.username;
+                userLink.classList.replace("account1", "account1");
+                userLink.href = "#";
+
+                signoutLink.innerText = "Sign Out";
+                signoutLink.classList.replace("account2", "account2");
+                signoutLink.href = "javascript:Signout()";
+            }
+        }
+
+        </script>
+  
+  
+  
+     </body>
+
+</html>
