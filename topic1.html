@@ -90,7 +90,7 @@ header a{
 
   .title_list{
     font-size: 20px;
-    text-align: center;
+    text-align: left;
   }
 
   .title_list a{
@@ -186,12 +186,22 @@ header a{
 
 h2{
    font-size: 30px;
+   color: #A46EE8;
 }
 
 h3{
    font-size: 25px;
    font-style: italic;
    margin-bottom: -15px;
+   color: #3b01e8;
+}
+
+code {
+   color: red;
+}
+
+pre {
+   background-color: whitesmoke;
 }
 
 /*Add media quesries for responsive navigation bar*/
@@ -241,7 +251,6 @@ h3{
    
   }
 
-
 @media screen and (max-height: 450px) {
   .overlay a {font-size: 20px}
   .overlay .closebtn {
@@ -251,6 +260,14 @@ h3{
   }
 }
 
+@media screen and (max-width: 600px) {
+   .content_box {
+      width: 90;
+   }
+   p {
+      padding-right: 14px;
+   }
+}
 
     </style>
     </head>
@@ -262,8 +279,8 @@ h3{
         </header>
         <div class="navbar" id="myNavbar">
            <ul>
-              <li><a href="./home.html">Home</a></li>
-              <li><a href="./quiz.html">Quiz</a></li>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./quiz1.html">Quiz</a></li>
               <li><a href="./flashcard1.html">Flashcard</a></li>
               <li><a href="./q&a.html">Q&A</a></li>
               <li><a href="#contact">Contact us</a></li>
@@ -285,25 +302,8 @@ h3{
                 <li><a href="./topic6.html">Consolidating</a></li>
                 <li><a href="./topic6.html">Pulling up</a></li>
                 <li><a href="./topic6.html">Pushing down</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
-                <li><a href="./topic6.html">Title 6</a></li>
+                <li><a href="./topic6.html">Additional 1</a></li>
+                <li><a href="./topic6.html">Additional 2</a></li>
             </ul>
         </nav>
 
@@ -317,36 +317,20 @@ h3{
         <div id="myOverlay" class="overlay">
          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
          <div class="overlay-content">
-            <a href="./topic1.html" class="active">Extracting</a></li>
-            <a href="./topic2.html">Title 2</a>
-            <a href="./topic3.html">Title 3</a>
-            <a href="./topic4.html">Title 4</a>
-            <a href="./topic5.html">Title 5</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
-            <a href="./topic6.html">Title 6</a>
+            <a href="./topic1.html" class="active">Extracting</a>
+            <a href="./topic1.html" class="active">Extracting</a>
+            <a href="./topic2.html">Inlining</a>
+            <a href="./topic3.html">Removing</a>
+            <a href="./topic4.html">Changing</a>
+            <a href="./topic5.html">Introducing</a>
+            <a href="./topic6.html">Hiding</a>
+            <a href="./topic6.html">Encapsulating</a>
+            <a href="./topic6.html">Replacing</a>
+            <a href="./topic6.html">Consolidating</a>
+            <a href="./topic6.html">Pulling up</a>
+            <a href="./topic6.html">Pushing down</a>
+            <a href="./topic6.html">Additional 1</a>
+            <a href="./topic6.html">Additional 2</a>
          </div>
        </div>
 
@@ -359,52 +343,134 @@ h3{
             <h2>✫ Extract Method</h2>
                <h3>Problem</h3>
                   <p> You have a code fragment that can be grouped together. </p>
+                  <pre>
+
+   void printOwing() {
+      printBanner();
+      
+      // Print details.
+      System.out.println("name: " + name);
+      System.out.println("amount: " + getOutstanding());
+   }
+                  </pre>
                <h3>Solution</h3>
                   <p> Move this code to a separate new method (or function) and replace the old code with a call to the method.</p>
-               <h3>Example</h3>
-                  <p>Before</p>
                   <pre>
-                     void printOwing() {
-                        printBanner();
-                      
-                        // Print details.
-                        System.out.println("name: " + name);
-                        System.out.println("amount: " + getOutstanding());
-                      }
+
+   void printOwing() {
+      printBanner();
+      <code>printDetails(getOutstanding());</code>
+   }
+      
+      <code>void printDetails(double outstanding) {
+      System.out.println("name: " + name);
+      System.out.println("amount: " + outstanding);
+   }</code>
+
+</pre>
+               <h3>When to use</h3>
+                  <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
+                     Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>       
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                     <h2>✫ Extract Variable </h2>
+            <h3>Problem</h3>
+               <p> You have an expression that's hard to understand. </p>
+               <pre>
+
+   void renderBanner() {
+      if ((platform.toUpperCase().indexOf("MAC") > -1) &&
+            (browser.toUpperCase().indexOf("IE") > -1) &&
+            wasInitialized() && resize > 0 )
+      {
+         // do something
+      }
+   }
+
+               </pre>
+            <h3>Solution</h3>
+               <p> Place the result of the expression or its parts in separate variables that are self-explanatory.</p>
+               <pre>
+
+      void renderBanner() {
+         <code>final boolean isMacOs = platform.toUpperCase().indexOf("MAC") > -1;
+         final boolean isIE = browser.toUpperCase().indexOf("IE") > -1;
+         final boolean wasResized = resize > 0;</code>
+         
+         if (isMacOs && isIE && wasInitialized() && wasResized) {
+            // do something
+         }
+      }
+
+               </pre>
+            <h3>When to use</h3>
+               <p>The main reason for extracting variables is to make a complex expression more understandable, by dividing it into its intermediate parts. </p> 
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->           
+               <h2>✫ Extract Class </h2>
+                  <h3>Problem</h3>
+                     <p> When one class does the work of two, awkwardness results. </p>
+                     <pre>
+
+   void student() {
+      studentID;
+      gradeSemester1;
+      gradeSemester2;
+      gradeSemester3;
+      gradeSemester4;
+
+      //functions
+      getGradeBook();
+      gpaCalculation();
+      saveGradebyID();
+   }
+
+                     </pre>
+                  <h3>Solution</h3>
+                     <p> Instead, create a new class and place the fields and methods responsible for the relevant functionality in it.</p>
+                     <pre>
+
+   void student() {
+      studentID;
+      <code>studentGradeBook();</code>
+   }
+
+   <code>void studentGradeBook() {
+      gradeSemester1;
+      gradeSemester2;
+      gradeSemester3;
+      gradeSemester4;
+
+      //functions
+      getGradeBook();
+      gpaCalculation();
+      saveGradebyID();
+   }</code>
+
+                     </pre>
+                  <h3>When to use</h3>
+                     <p>Classes always start out clear and easy to understand. They do their job and mind their own business as it were, without
+                        butting into the work of other classes. But as the program expands, a method is added and then a field... and eventually, 
+                        some classes are performing more responsibilities than ever envisioned.</p>
+                    
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+               <h2>✫ Extract Subclass/Superclass/Interface</h2>
+               <h3>Problem</h3>
+                  <p> You have two classes with common fields and methods. </p>
+                  <pre>
+                     
+   // updating 
+
                   </pre>
-                  <p>After</p>
+               <h3>Solution</h3>
+                  <p> Create a shared superclass for them and move all the identical fields and methods to it.</p>
                   <pre>
-                     void printOwing() {
-                        printBanner();
-                        printDetails(getOutstanding());
-                      }
-                      
-                      void printDetails(double outstanding) {
-                        System.out.println("name: " + name);
-                        System.out.println("amount: " + outstanding);
-                      }
+
+   // updating 
+
                   </pre>
                <h3>When to use</h3>
-                  <p>The more lines found in a method, the harder it’s to figure out what the method does. This is the main reason for this refactoring.<br><br>
+                  <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
                      Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>
-            <h2>✫ Extract Variable </h2>
-               <h3>Problem</h3>
-               <h3>Solution</h3>
-               <h3>Example</h3>
-               <h3>When to use</h3>
-            <h2>✫ Extract Class </h2>
-               <h3>Problem</h3>
-               <h3>Solution</h3>
-               <h3>Example</h3>
-               <h3>When to use</h3> 
-            <h2>✫ Extract Subclass/Superclass/Interface</h2>
-               <h3>Problem</h3>
-               <h3>Solution</h3>
-               <h3>Example</h3>
-               <h3>When to use</h3>     
-
         </div>
-
         
         <script>
            function myFunction() { 
