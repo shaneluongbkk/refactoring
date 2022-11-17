@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta name="viewport" content="width=device-width", initial-scale="1.0"> 
+      <link rel='stylesheet'  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+body{
+    margin: 0;
+    font-family: Arial;
+}
+
+.header{
+    background-color: #DED9FC;
+    padding: 60px;
+    z-index: 100;
+}
+
+.navbar{
+    background-color: #DED9FC;
+    overflow: hidden;
+    position: sticky; 
+    top: 0;
+    text-align: center;
+    z-index: 1;
+} 
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 37px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    color: #A46EE8;
+}
+
+.navbar a.active {
+    background-color: #A46EE8;
+    color: white;
+}
+
+/*Hide the hamburger icon*/
+.navbar .icon{
+   display: none;
+}
+
+.navbar li{
+   display: inline;
+}
+
+ 
+
+/*Style for the content of the page*/
+  .toc_container{
+    position: sticky;
+    top: 5.5rem;
+    left: 0;
+    width: 15%;
+    height: 40rem;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: grey;
+    scrollbar-width: thin;
+  }
+
+  .title{
+    font-size: 38px;
+    text-align: left;
+    margin-top: 5rem;
+  }
+
+  .title_list{
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .title_list a{
+    color: black; 
+    text-decoration: none;
+    display: block;
+    padding-top: 30px;
+  }
+
+  .title_list a:hover{
+    color: gray;
+  }
+
+  .title_list a.active{
+    color:  #A46EE8;
+  }
+
+  .content_box{
+    position: relative;
+    top: -40rem;
+    left: 20%;
+    width: 75%;
+    z-index: 0;
+  }
+  
+
+  .overlay_icon a{
+      position: relative;
+      top: 0;
+      left: 0;
+      font-size: 35px;
+      color: grey;
+   }
+
+   .overlay_icon a:hover {
+      color: black;
+   }
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.questionBox{
+    position: relative;
+    top: -32rem;
+    left: 34vw;
+    height: 200px;
+    width: 700px;
+    font-size: 30px;
+    overflow: hidden;
+}
+
+.answer_container{
+  position: absolute;
+  top: 38rem;
+  left: 55%;
+  width: 700px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+
+}
+
+.answer_card{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #dfdede77;
+  border: outset 0.1px #c8c8c8;
+  border-radius: 20px;
+  box-shadow: 5px 10px 15px #8888;
+  font-size: 25px;
+}
+
+
+.answer{
+  text-align: left;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+input{
+  height: 18px;
+  width: 18px;
+}
+
+.nextBtn{
+  position: absolute;
+  left: 70vw;
+  top: 53rem;
+  background-color: #A46EE8;
+  width: 100px;
+  color: white;
+  font-size: 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.restartBtn{
+  background-color: #A46EE8;
+  width: 150px;
+  height: 35px;
+  color: white;
+  font-size: 22px;
+  margin: 20px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nextBtn:hover, .restartBtn:hover{
+  transform: scale(1.07);
+  transition-duration: 120ms;
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+.result{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 30px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+ /*Add media quesries for responsive navigation bar*/
+ @media screen and (max-width: 1000px){
+   .navbar a {display: none;}
+   .navbar a.icon{
+      float: right;
+      display: block;
+   }
+  } 
+
+  @media screen and (max-width: 1000px){
+   .navbar.responsive {position: relative;}
+   .navbar.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+   }
+   .navbar.responsive a{
+      float: none;
+      display: block;
+      text-align: left;
+   }
+  }
+
+  @media screen and (max-width: 1300px) {
+    .answer_container {
+      margin-left: 5rem;
+    }
+  }
+
+ /*
+  Do not display the open button for large screen.
+  Style for the overlay menu
+  */
+  @media screen and (min-width: 1000px) {
+   .overlay_icon a {display: none;}
+  }
+
+  @media screen and (max-width: 1000px) {
+   .toc_container {display: none;}
+   .content_box {
+     position: relative;
+     left: 10vw;
+     top: 5vw;
+   }
+
+   .answer_container {
+    margin-left: -3rem;
+   }
+
+   .questionBox{
+      margin-top: 38rem;
+      margin-left: -12rem;
+   }
+
+   .title {font-size: 35px;}
+   
+   .nextBtn{
+      margin-left: -13rem;
+    }
+  }
+
+ 
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+@media screen and (max-width: 600px){
+    .answer_container{
+      width: 450px;
+      height: 400px;
+      padding-left: 40px;
+    }
+    .answer_card{
+      font-size: 20px;
+    }
+
+    .questionBox{
+      width: 450px;
+      height: 250px;
+      font-size: 25px;
+      padding-left: 40px;
+    }
+
+    .nextBtn{
+    margin-left: -10rem;
+    }
+  }
+  
+
+
+</style>
+</head> 
+   <body>
+      <header class="header"></header>
+      <div class="navbar" id="myNavbar">
+         <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./quiz.html" class="active">Quiz</a></li>
+            <li><a href="./flashcard1.html">Flashcard</a></li>
+            <li><a href="./q&a.html">Q&A</a></li>
+            <li><a href="#contact">Contact us</a></li>
+            <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+               <i class="fa fa-bars"></i></a></li>
+         </ul>
+      </div>
+      
+
+      <div id="myTable" class="toc_container">
+        <ul style="list-style-type: none;" class="title_list">
+            <li><a href="./topic1.html" class="active">Title 1</a></li>
+            <li><a href="./topic2.html">Title 2</a></li>
+            <li><a href="./topic3.html">Title 3</a></li>
+            <li><a href="./topic4.html">Title 4</a></li>
+            <li><a href="./topic5.html">Title 5</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+            <li><a href="./topic6.html">Title 6</a></li>
+        </ul>
+    </div>
+
+
+    <!--Full screen overlay menu for responsiveness-->
+    <div class="overlay_icon">
+     <a href="javascript:void(0)"onclick="openNav()">
+        <i class="fa fa-chevron-circle-right"></i></a>
+    </div>
+
+    <div id="myOverlay" class="overlay">
+     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+     <div class="overlay-content">
+        <a href="./flashcard1.html">Title 1</a></li>
+        <a href="./topic2.html">Title 2</a>
+        <a href="./topic3.html">Title 3</a>
+        <a href="./topic4.html">Title 4</a>
+        <a href="./topic5.html">Title 5</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+        <a href="./topic6.html">Title 6</a>
+     </div>
+   </div>
+
+   <div id="question" class="questionBox" >First Question</div>
+   <div class="answer_container">
+    <div class="answer_card">
+    <ul id="list"style="list-style-type: none">
+      <li>
+        <input type="radio" name="answer" id="a" class="answer">
+        <label for="a" id="a_text">First answer</label>
+      </li>
+
+      <li>
+        <input type="radio" name="answer" id="b" class="answer">
+        <label for="b" id="b_text">Second answer</label>
+      </li>
+      
+      <li>
+        <input type="radio" name="answer" id="c" class="answer">
+        <label for="c" id="c_text">Third answer</label>
+      </li>
+
+      <li>
+        <input type="radio" name="answer" id="d" class="answer">
+        <label for="d" id="d_text">Fourth answer</label>
+      </li>
+    </ul>  
+   </div>
+   </div>
+   <button id="next" class="nextBtn">Next</button>
+   
+
+      
+
+      <script>
+       
+    const myQuestion = [
+    {
+      query: "1 + 1 = ?",
+      a: "1",
+      b: "4",
+      c: "2",
+      d: "0",
+      correct: "c"
+    },
+    {
+      query: "2 + 1 = ?",
+      a: "3",
+      b: "4",
+      c: "2",
+      d: "0",
+      correct: "a"
+    }
+  ]
+
+  const answers = document.querySelectorAll('.answer')
+  const question = document.getElementById('question')
+  const myList = document.getElementById('list')
+  const a_text = document.getElementById('a_text')
+  const b_text = document.getElementById('b_text')
+  const c_text = document.getElementById('c_text')
+  const d_text = document.getElementById('d_text')
+  const nextButton = document.getElementById('next')
+
+  let currentQuestion = 0
+  let score = 0
+
+  startQuiz()
+
+  function startQuiz() {
+
+    deselectAnswer()
+
+    const currentData = myQuestion[currentQuestion]
+    question.innerText = currentData.query
+    a_text.innerText = currentData.a
+    b_text.innerText = currentData.b
+    c_text.innerText = currentData.c
+    d_text.innerText = currentData.d
+  }
+
+  function deselectAnswer() {
+    answers.forEach(answers => answers.checked = false)
+  }
+
+  function getSelected() {
+    let answer
+    answers.forEach(answers => {
+      if (answers.checked) {
+        answer = answers.id
+      }
+    })
+    return answer
+  }
+
+  nextButton.addEventListener('click', () => {
+    const answer = getSelected()
+    if (answer) {
+      if (answer === myQuestion[currentQuestion].correct) {
+        score++
+      }
+      currentQuestion++
+
+      if (currentQuestion < myQuestion.length) {
+        startQuiz()
+      }
+
+      else {
+          question.innerText = ''
+          myList.innerHTML = 
+          `<p class="result"> Your score:<br> ${score}/${myQuestion.length} </h1>
+          <br><button class="restartBtn" onclick="location.reload()"> Start over </button>`  
+          nextButton.remove()
+          
+          
+      }
+
+    }
+  })
+
+
+
+   /*Function for responsive navigation bar*/
+   function myFunction() { 
+    var x = document.getElementById("myNavbar");
+    if (x.className === "navbar") {
+       x.className += " responsive";
+    }
+    else {
+       x.className = "navbar";
+    }
+ }
+
+ /*Funtions for overlay menu*/
+ function openNav() {
+    document.getElementById("myOverlay").style.width = "100%";
+   }
+
+   function closeNav() {
+    document.getElementById("myOverlay").style.width = "0%";
+   }
+
+
+
+        
+      </script>
+
+
+
+   </body>
+</html>
