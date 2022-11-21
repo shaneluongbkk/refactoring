@@ -51,7 +51,49 @@ body{
    display: inline;
 }
 
- 
+.navbar .account{
+  font-size: 40px;
+  float: right;
+  padding-right: 100px;
+  color: grey;
+}
+
+.sub_menu_container{
+   position: absolute;
+   top: 200px;
+   right: 40px;
+   width: 160px;
+   height: 100px;
+}
+
+.sub_menu{
+   position: relative;
+   display: none;
+   height: 100%;
+   width: 100%;
+   background-color: #F8F8F8;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 2;
+   transition: 1s;
+}
+
+.show {
+   display: block;
+}
+
+.sub_menu a{
+   color: black;
+   font-size: 20px;
+   text-decoration: none;
+   padding: 12px 25px;
+   display: block;
+}
+
+.sub_menu a:hover, .sub_menu a:focus{
+   color: gray;
+   transform: scale(1.2);
+   transition: 0.2s;
+}
 
 /*Style for the content of the page*/
   .toc_container{
@@ -158,9 +200,8 @@ body{
     position: relative;
     top: -32rem;
     left: 34vw;
-    height: 300px;
+    height: 200px;
     width: 700px;
-    margin-bottom: 10px;
     font-size: 30px;
     overflow: hidden;
 }
@@ -331,7 +372,17 @@ input{
     }
   }
   
-
+  .footage{
+      width: 100%;
+      height: 10rem;
+      margin-top: -25px;
+      background-color: #A46EE8;
+      color: white;
+      font-size: 25px;
+      display: block;
+      padding: 10px;
+      text-align: center;
+   }
 
 </style>
 </head> 
@@ -344,27 +395,35 @@ input{
             <li><a href="./flashcard1.html">Flashcard</a></li>
             <li><a href="./q&a.html">Q&A</a></li>
             <li><a href="#contact">Contact us</a></li>
+            <li><a href="javascript:void(0);" id="profile" class="account" onclick="openSetting()">
+              <i class="fa fa-user-circle"></i></a></li>
             <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
                <i class="fa fa-bars"></i></a></li>
          </ul>
       </div>
       
+      <div id="wrapper" class="sub_menu_container">
+        <div id="sub_menu" class="sub_menu">
+              <a id="userlink"  href="">Username</a>
+              <a id="signoutlink"  href="">Sign Out</a>
+        </div>
+       </div>
 
       <nav id="myTable" class="toc_container">
         <ul style="list-style-type: none;" class="title_list">
-            <li><a href="./topic1.html" class="active">Extracting</a></li>
-            <li><a href="./topic2.html">Inlining</a></li>
-            <li><a href="./topic3.html">Removing</a></li>
-            <li><a href="./topic4.html">Changing</a></li>
-            <li><a href="./topic5.html">Introducing</a></li>
-            <li><a href="./topic6.html">Hiding</a></li>
-            <li><a href="./topic6.html">Encapsulating</a></li>
-            <li><a href="./topic6.html">Replacing</a></li>
-            <li><a href="./topic6.html">Consolidating</a></li>
-            <li><a href="./topic6.html">Pulling up</a></li>
-            <li><a href="./topic6.html">Pushing down</a></li>
-            <li><a href="./topic6.html">Additional 1</a></li>
-            <li><a href="./topic6.html">Additional 2</a></li>
+          <li><a href="./topic1.html" class="active">Extracting</a></li>
+          <li><a href="./topic2.html">Inlining</a></li>
+          <li><a href="./topic3.html">Removing</a></li>
+          <li><a href="./topic4.html">Changing</a></li>
+          <li><a href="./topic5.html">Introducing</a></li>
+          <li><a href="./topic6.html">Hiding</a></li>
+          <li><a href="./topic7.html">Encapsulating</a></li>
+          <li><a href="./topic8.html">Replacing</a></li>
+          <li><a href="./topic9.html">Consolidating</a></li>
+          <li><a href="./topic10.html">Pulling up</a></li>
+          <li><a href="./topic11.html">Pushing down</a></li>
+          <li><a href="./topic12.html">Additional 1</a></li>
+          <li><a href="./topic13.html">Additional 2</a></li>
         </ul>
     </nav>
 
@@ -378,20 +437,19 @@ input{
     <div id="myOverlay" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-           <a href="./topic1.html" class="active">Extracting</a>
-           <a href="./topic1.html" class="active">Extracting</a>
-           <a href="./topic2.html">Inlining</a>
-           <a href="./topic3.html">Removing</a>
-           <a href="./topic4.html">Changing</a>
-           <a href="./topic5.html">Introducing</a>
-           <a href="./topic6.html">Hiding</a>
-           <a href="./topic6.html">Encapsulating</a>
-           <a href="./topic6.html">Replacing</a>
-           <a href="./topic6.html">Consolidating</a>
-           <a href="./topic6.html">Pulling up</a>
-           <a href="./topic6.html">Pushing down</a>
-           <a href="./topic6.html">Additional 1</a>
-           <a href="./topic6.html">Additional 2</a>
+          <a href="./topic1.html" class="active">Extracting</a>
+          <a href="./topic2.html">Inlining</a>
+          <a href="./topic3.html">Removing</a>
+          <a href="./topic4.html">Changing</a>
+          <a href="./topic5.html">Introducing</a>
+          <a href="./topic6.html">Hiding</a>
+          <a href="./topic7.html">Encapsulating</a>
+          <a href="./topic8.html">Replacing</a>
+          <a href="./topic9.html">Consolidating</a>
+          <a href="./topic10.html">Pulling up</a>
+          <a href="./topic11.html">Pushing down</a>
+          <a href="./topic12.html">Additional 1</a>
+          <a href="./topic13.html">Additional 2</a>
         </div>
       </div>
 
@@ -422,10 +480,12 @@ input{
    </div>
    </div>
    <button id="next" class="nextBtn">Next</button>
+
+   <div class="footage" id="contact">
+      <p>Minh Luong: MinhHienLuong@my.unt.edu</p>
+      <p>Nhi Ha: NgocYenNhiHa@my.unt.edu</p>
+  </div>
    
-
-      
-
       <script>
     const myQuestion = [
     {
@@ -503,15 +563,10 @@ input{
           myList.innerHTML = 
           `<p class="result"> Your score:<br> ${score}/${myQuestion.length} </h1>
           <br><button class="restartBtn" onclick="location.reload()"> Start over </button>`  
-          nextButton.remove()
-          
-          
+          nextButton.remove() 
       }
-
     }
   })
-
-
 
    /*Function for responsive navigation bar*/
    function myFunction() { 
@@ -524,21 +579,61 @@ input{
     }
  }
 
- /*Funtions for overlay menu*/
- function openNav() {
-    document.getElementById("myOverlay").style.width = "100%";
-   }
+      /*Funtions for overlay menu*/
+      function openNav() {
+      document.getElementById("myOverlay").style.width = "100%";
+      }
 
-   function closeNav() {
-    document.getElementById("myOverlay").style.width = "0%";
-   }
+      function closeNav() {
+      document.getElementById("myOverlay").style.width = "0%";
+      }
 
+      function openSetting(){
+          document.getElementById("sub_menu").classList.toggle("show");
+      }
 
+                 // References
+                 let userLink = document.getElementById('userlink');
+        let signoutLink = document.getElementById('signoutlink');
+        let header = document.getElementById('hh');
+        var currentUser = null;
 
-        
+        // Functions
+        function getUsername() {
+            let rememberMe = localStorage.getItem("rememberMe");
+
+            if(rememberMe == "yes") {
+                currentUser = JSON.parse(localStorage.getItem('user'));
+            } else {
+                currentUser = JSON.parse(sessionStorage.getItem('user'));
+            }
+        }
+
+        function Signout() {
+            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location = "topic1.html";
+        }
+
+        // Window refreshes
+        window.onload = function() {
+            getUsername();
+            if(currentUser == null) {
+                userLink.innerText = "Register";
+                userLink.href = "registration.html";
+
+                signoutLink.innerText = "Login";
+                signoutLink.href = "login.html";
+            } else {
+                userLink.innerText = currentUser.username;
+                userLink.href = "#";
+
+                signoutLink.innerText = "Sign Out";
+                signoutLink.href = "javascript:Signout()";
+            }
+        }
+   
       </script>
-
-
-
    </body>
 </html>
