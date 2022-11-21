@@ -18,23 +18,7 @@ body{
 header a{
    text-decoration: none;
 }
-
-.header .account1 {
-   background-color: #A46EE8;
-   color: #000;
-   border-radius: 10px;
-   padding: 20px;
-   font-size: 20px;
-}
-
-.header .account2 {
-   background-color: #DEB9FC;
-   color: #000;
-   border-radius: 10px;
-   padding: 20px;
-   font-size: 20px;
-}
-       
+  
 .navbar{
     background-color: #DED9FC ;
     overflow: hidden;
@@ -68,6 +52,50 @@ header a{
 
 .navbar li{
    display: inline;
+}
+
+.navbar .account{
+  font-size: 40px;
+  float: right;
+  padding-right: 100px;
+  color: grey;
+}
+
+.sub_menu_container{
+   position: absolute;
+   top: 200px;
+   right: 40px;
+   width: 160px;
+   height: 100px;
+}
+
+.sub_menu{
+   position: relative;
+   display: none;
+   height: 100%;
+   width: 100%;
+   background-color: #F8F8F8;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 2;
+   transition: 1s;
+}
+
+.show {
+   display: block;
+}
+
+.sub_menu a{
+   color: black;
+   font-size: 20px;
+   text-decoration: none;
+   padding: 12px 25px;
+   display: block;
+}
+
+.sub_menu a:hover, .sub_menu a:focus{
+   color: gray;
+   transform: scale(1.2);
+   transition: 0.2s;
 }
 
 .toc_container{
@@ -204,6 +232,18 @@ pre {
    background-color: whitesmoke;
 }
 
+.footage{
+      width: 100%;
+      height: 10rem;
+      margin-top: -25px;
+      background-color: #A46EE8;
+      color: white;
+      font-size: 25px;
+      display: block;
+      padding: 10px;
+      text-align: center;
+   }
+
 /*Add media quesries for responsive navigation bar*/
 @media screen and (max-width: 1000px){
    .navbar a {display: none;}
@@ -273,37 +313,44 @@ pre {
     </head>
     <body>
          
-        <header class="header">
-            <a id="userlink" class="account1" href="">Username</a>
-            <a id="signoutlink" class="account2" href="">Sign Out</a>
+        <header class="header">     
         </header>
-        <div class="navbar" id="myNavbar">
+        <nav class="navbar" id="myNavbar">
            <ul>
               <li><a href="./index.html">Home</a></li>
               <li><a href="./quiz1.html">Quiz</a></li>
               <li><a href="./flashcard1.html">Flashcard</a></li>
               <li><a href="./q&a.html">Q&A</a></li>
               <li><a href="#contact">Contact us</a></li>
+              <li><a href="javascript:void(0);" id="profile" class="account" onclick="openSetting()">
+               <i class="fa fa-user-circle"></i></a></li>
               <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
                  <i class="fa fa-bars"></i></a></li>
            </ul>
+        </nav>
+
+        <div id="wrapper" class="sub_menu_container">
+         <div id="sub_menu" class="sub_menu">
+               <a id="userlink"  href="">Username</a>
+               <a id="signoutlink"  href="">Sign Out</a>
+         </div>
         </div>
         
         <nav id="myTable" class="toc_container">
             <ul style="list-style-type: none;" class="title_list">
-                <li><a href="./topic1.html" class="active">Extracting</a></li>
-                <li><a href="./topic2.html">Inlining</a></li>
-                <li><a href="./topic3.html">Removing</a></li>
-                <li><a href="./topic4.html">Changing</a></li>
-                <li><a href="./topic5.html">Introducing</a></li>
-                <li><a href="./topic6.html">Hiding</a></li>
-                <li><a href="./topic6.html">Encapsulating</a></li>
-                <li><a href="./topic6.html">Replacing</a></li>
-                <li><a href="./topic6.html">Consolidating</a></li>
-                <li><a href="./topic6.html">Pulling up</a></li>
-                <li><a href="./topic6.html">Pushing down</a></li>
-                <li><a href="./topic6.html">Additional 1</a></li>
-                <li><a href="./topic6.html">Additional 2</a></li>
+               <li><a href="./topic1.html" class="active">Extracting</a></li>
+               <li><a href="./topic2.html">Inlining</a></li>
+               <li><a href="./topic3.html">Removing</a></li>
+               <li><a href="./topic4.html">Changing</a></li>
+               <li><a href="./topic5.html">Introducing</a></li>
+               <li><a href="./topic6.html">Hiding</a></li>
+               <li><a href="./topic7.html">Encapsulating</a></li>
+               <li><a href="./topic8.html">Replacing</a></li>
+               <li><a href="./topic9.html">Consolidating</a></li>
+               <li><a href="./topic10.html">Pulling up</a></li>
+               <li><a href="./topic11.html">Pushing down</a></li>
+               <li><a href="./topic12.html">Additional 1</a></li>
+               <li><a href="./topic13.html">Additional 2</a></li>
             </ul>
         </nav>
 
@@ -323,13 +370,13 @@ pre {
             <a href="./topic4.html">Changing</a>
             <a href="./topic5.html">Introducing</a>
             <a href="./topic6.html">Hiding</a>
-            <a href="./topic6.html">Encapsulating</a>
-            <a href="./topic6.html">Replacing</a>
-            <a href="./topic6.html">Consolidating</a>
-            <a href="./topic6.html">Pulling up</a>
-            <a href="./topic6.html">Pushing down</a>
-            <a href="./topic6.html">Additional 1</a>
-            <a href="./topic6.html">Additional 2</a>
+            <a href="./topic7.html">Encapsulating</a>
+            <a href="./topic8.html">Replacing</a>
+            <a href="./topic9.html">Consolidating</a>
+            <a href="./topic10.html">Pulling up</a>
+            <a href="./topic11.html">Pushing down</a>
+            <a href="./topic12.html">Additional 1</a>
+            <a href="./topic13.html">Additional 2</a>
          </div>
        </div>
 
@@ -337,7 +384,7 @@ pre {
         <!--Main content-->
         <div class="content_box">
          <h1 class="title">Extracting Methods</h1>
-         <p style="font-style:italic">Last updated: 11/16/2022</p>
+         <p style="font-style:italic">Last updated: 11/17/2022</p>
          <hr class="line">
             <h2>✫ Extract Method</h2>
                <h3>Problem</h3>
@@ -470,6 +517,11 @@ pre {
                   <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
                      Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>
         </div>
+
+         <div class="footage" id="contact">
+            <p>Minh Luong: MinhHienLuong@my.unt.edu</p>
+            <p>Nhi Ha: NgocYenNhiHa@my.unt.edu</p>
+         </div>
         
         <script>
            function myFunction() { 
@@ -489,6 +541,10 @@ pre {
            function closeNav() {
             document.getElementById("myOverlay").style.width = "0%";
            }
+
+           function openSetting(){
+               document.getElementById("sub_menu").classList.toggle("show");
+            }
 
            // References
         let userLink = document.getElementById('userlink');
@@ -519,27 +575,19 @@ pre {
             getUsername();
             if(currentUser == null) {
                 userLink.innerText = "Register";
-                userLink.classList.replace("account1", "account1");
                 userLink.href = "registration.html";
 
                 signoutLink.innerText = "Login";
-                signoutLink.classList.replace("account2", "account2");
                 signoutLink.href = "login.html";
             } else {
                 userLink.innerText = currentUser.username;
-                userLink.classList.replace("account1", "account1");
                 userLink.href = "#";
 
                 signoutLink.innerText = "Sign Out";
-                signoutLink.classList.replace("account2", "account2");
                 signoutLink.href = "javascript:Signout()";
             }
         }
 
         </script>
-  
-  
-  
      </body>
-
 </html>
