@@ -104,7 +104,8 @@ header a{
     top: 5.5rem;
     left: 0;
     width: 15%;
-    height: 45rem;
+    height: 44rem;
+    margin-top: -20px;
     background-color: white;
     border-right: solid;
     border-color: #A46EE8;
@@ -143,6 +144,7 @@ header a{
     left: 20%;
     width: 75%;
     z-index: 0;
+    height: auto;
   }
 
   p{
@@ -158,7 +160,6 @@ header a{
    border-top: 1px solid black;
   }
 
- 
   .overlay_icon a{
       position: relative;
       top: 0;
@@ -234,15 +235,17 @@ pre {
 }
 
 .footage{
-      width: 100%;
-      height: 10rem;
-      margin-top: -25px;
-      background-color: #A46EE8;
-      color: white;
-      font-size: 25px;
-      display: block;
-      padding: 10px;
-   }
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   height: 10rem;
+   margin-top: -35rem;
+   background-color: #A46EE8;
+   color: white;
+   font-size: 25px;
+   display: block;
+   padding: 10px;
+}
 
 /*Add media quesries for responsive navigation bar*/
 @media screen and (max-width: 1000px){
@@ -333,6 +336,18 @@ pre {
       overflow-x: scroll;
    }
 }
+
+@media screen and (max-height: 2200px) {
+   .toc_container {
+      height: 39.5rem;
+   }
+   .title_list a{
+      padding-top: 24px;
+   }
+   .content_box {
+      top: -40rem;
+   }
+}
     </style>
     </head>
     <body>
@@ -340,7 +355,7 @@ pre {
         <header class="header"></header>
         <nav class="navbar" id="myNavbar">
            <ul>
-              <li><a href="./topic1.html">Home</a></li>
+              <li><a href="./topic1.html" class="active">Home</a></li>
               <li><a href="./quiz1.html">Quiz</a></li>
               <li><a href="./flashcard1.html">Flashcard</a></li>
               <li><a href="./q&a.html">Q&A</a></li>
@@ -407,9 +422,9 @@ pre {
         <!--Main content-->
         <div class="content_box">
          <h1 class="title">Inlining Methods</h1>
-         <p style="font-style:italic">Last updated: 11/21/2022</p>
+         <p style="font-style:italic">Last updated: 11/17/2022</p>
          <hr class="line">
-            <h2>✫ Inline Method</h2>
+            <h2>✫ Incline Method</h2>
                <h3>Problem</h3>
                   <p> When a method body is more obvious than the method itself. </p>
                   <pre>
@@ -423,10 +438,9 @@ pre {
          return numberOfSimilarItemsBought > 2;
       }
    }
-                  
                   </pre>
                <h3>Solution</h3>
-                  <p> Remove the method itself and replace any calls with the method's content.</p>
+                  <p> Put this code in a distinct new method (or function) and call the new method instead of the previous code.</p>
                   <pre>
 
    class Discount {
