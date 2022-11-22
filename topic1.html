@@ -62,11 +62,12 @@ header a{
 }
 
 .sub_menu_container{
-   position: absolute;
+   position: fixed;
    top: 200px;
    right: 40px;
    width: 160px;
    height: 100px;
+   z-index: 2;
 }
 
 .sub_menu{
@@ -76,7 +77,6 @@ header a{
    width: 100%;
    background-color: #F8F8F8;
    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index: 2;
    transition: 1s;
 }
 
@@ -154,7 +154,7 @@ header a{
   }
 
   hr.line{
-   margin-right: 8vw;
+   margin-right: 9vw;
    border-top: 1px solid black;
   }
 
@@ -230,6 +230,7 @@ code {
 
 pre {
    background-color: whitesmoke;
+   margin-right: 150px;
 }
 
 .footage{
@@ -265,6 +266,10 @@ pre {
       display: block;
       text-align: left;
    }
+
+   .navbar.responsive .account{
+      display: none;
+   }
   }
 
    /*Do not display the open button for large screen*/
@@ -287,6 +292,13 @@ pre {
       font-size: 20px;
       padding-right: 5vw;
    }
+   .sub_menu{
+      display: none;
+   }
+
+   .navbar{
+      position: relative;
+   }
    
   }
 
@@ -299,6 +311,12 @@ pre {
   }
 }
 
+@media screen and (max-width: 800px){
+   pre{
+      margin-right: auto;
+   }
+}
+
 @media screen and (max-width: 600px) {
    .content_box {
       width: 90;
@@ -306,8 +324,13 @@ pre {
    p {
       padding-right: 14px;
    }
-}
 
+   pre{
+      margin-right: auto;
+      font-size: 15px;
+      overflow-x: scroll;
+   }
+}
     </style>
     </head>
     <body>
@@ -436,15 +459,15 @@ pre {
                <p> Place the result of the expression or its parts in separate variables that are self-explanatory.</p>
                <pre>
 
-      void renderBanner() {
-         <code>final boolean isMacOs = platform.toUpperCase().indexOf("MAC") > -1;
-         final boolean isIE = browser.toUpperCase().indexOf("IE") > -1;
-         final boolean wasResized = resize > 0;</code>
-         
-         if (isMacOs && isIE && wasInitialized() && wasResized) {
-            // do something
-         }
+   void renderBanner() {
+      <code>final boolean isMacOs = platform.toUpperCase().indexOf("MAC") > -1;
+      final boolean isIE = browser.toUpperCase().indexOf("IE") > -1;
+      final boolean wasResized = resize > 0;</code>
+      
+      if (isMacOs && isIE && wasInitialized() && wasResized) {
+         // do something
       }
+   }
 
                </pre>
             <h3>When to use</h3>
@@ -523,6 +546,8 @@ pre {
          </div>
         
         <script>
+
+         //Function to trigger responsiveness of navbar
            function myFunction() { 
               var x = document.getElementById("myNavbar");
               if (x.className === "navbar") {
@@ -533,17 +558,46 @@ pre {
               }
            }
 
+           //Open the overlay menu
            function openNav() {
             document.getElementById("myOverlay").style.width = "100%";
            }
 
+           //Close the overlay menu
            function closeNav() {
             document.getElementById("myOverlay").style.width = "0%";
            }
 
+           //Toogle account settings
            function openSetting(){
                document.getElementById("sub_menu").classList.toggle("show");
             }
+
+            //Close the account settings when the user clicks outside 
+            window.onclick = function(event) { 
+            if (!event.target.closest('.account')) {
+               var dropdowns = document.getElementsByClassName("sub_menu");
+               var i;
+               for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                  }
+               }
+            }
+            }
+
+
+            //Adjust the sub menu position when scrolling down
+            window.addEventListener("scroll", function(event) {
+               var scroll = this.scrollY;
+               if (scroll > 50){
+                  document.getElementById("wrapper").style.top = "80px";
+               }
+               else {
+                  document.getElementById("wrapper").style.top = "200px";
+               }
+            })
 
            // References
         let userLink = document.getElementById('userlink');
