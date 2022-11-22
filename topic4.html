@@ -18,23 +18,7 @@ body{
 header a{
    text-decoration: none;
 }
-
-.header .account1 {
-   background-color: #A46EE8;
-   color: #000;
-   border-radius: 10px;
-   padding: 20px;
-   font-size: 20px;
-}
-
-.header .account2 {
-   background-color: #DEB9FC;
-   color: #000;
-   border-radius: 10px;
-   padding: 20px;
-   font-size: 20px;
-}
-       
+  
 .navbar{
     background-color: #DED9FC ;
     overflow: hidden;
@@ -58,6 +42,7 @@ header a{
 
 .navbar a.active {
     background-color: #A46EE8;
+    border-radius: 10px;
     color: white;
 }
 
@@ -70,16 +55,59 @@ header a{
    display: inline;
 }
 
+.navbar .account{
+  font-size: 40px;
+  float: right;
+  padding-right: 100px;
+  color: grey;
+}
+
+.sub_menu_container{
+   position: fixed;
+   top: 200px;
+   right: 40px;
+   width: 160px;
+   height: 100px;
+   z-index: 2;
+}
+
+.sub_menu{
+   position: relative;
+   display: none;
+   height: 100%;
+   width: 100%;
+   background-color: #F8F8F8;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   transition: 1s;
+}
+
+.show {
+   display: block;
+}
+
+.sub_menu a{
+   color: black;
+   font-size: 20px;
+   text-decoration: none;
+   padding: 12px 25px;
+   display: block;
+}
+
+.sub_menu a:hover, .sub_menu a:focus{
+   color: gray;
+   transform: scale(1.2);
+   transition: 0.2s;
+}
+
 .toc_container{
     position: sticky;
     top: 5.5rem;
     left: 0;
     width: 15%;
-    height: 40rem;
+    height: 45rem;
     background-color: white;
-    overflow-y: scroll;
-    scrollbar-color: grey;
-    scrollbar-width: thin;
+    border-right: solid;
+    border-color: #A46EE8;
   }
 
   .title{
@@ -111,7 +139,7 @@ header a{
 
   .content_box{
     position: relative;
-    top: -40rem;
+    top: -46rem;
     left: 20%;
     width: 75%;
     z-index: 0;
@@ -126,7 +154,7 @@ header a{
   }
 
   hr.line{
-   margin-right: 8vw;
+   margin-right: 9vw;
    border-top: 1px solid black;
   }
 
@@ -185,7 +213,7 @@ header a{
 }
 
 h2{
-   font-size: 30px;
+   font-size: 40px;
    color: #A46EE8;
 }
 
@@ -202,7 +230,19 @@ code {
 
 pre {
    background-color: whitesmoke;
+   margin-right: 150px;
 }
+
+.footage{
+      width: 100%;
+      height: 10rem;
+      margin-top: -25px;
+      background-color: #A46EE8;
+      color: white;
+      font-size: 25px;
+      display: block;
+      padding: 10px;
+   }
 
 /*Add media quesries for responsive navigation bar*/
 @media screen and (max-width: 1000px){
@@ -225,6 +265,10 @@ pre {
       display: block;
       text-align: left;
    }
+
+   .navbar.responsive .account{
+      display: none;
+   }
   }
 
    /*Do not display the open button for large screen*/
@@ -232,7 +276,7 @@ pre {
    .overlay_icon a {display: none;}
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
    .toc_container {display: none;}
    .content_box {
      position: relative;
@@ -247,8 +291,17 @@ pre {
       font-size: 20px;
       padding-right: 5vw;
    }
-   .account1, .account2 { display: none;}
-   
+   .sub_menu{
+      display: none;
+   }
+
+   .navbar{
+      position: relative;
+   }
+   .footage {
+      margin-top: 100px;
+      font-size: 15px;
+   }
   }
 
 @media screen and (max-height: 450px) {
@@ -260,6 +313,12 @@ pre {
   }
 }
 
+@media screen and (max-width: 800px){
+   pre{
+      margin-right: auto;
+   }
+}
+
 @media screen and (max-width: 600px) {
    .content_box {
       width: 90;
@@ -267,43 +326,54 @@ pre {
    p {
       padding-right: 14px;
    }
-}
 
+   pre{
+      margin-right: auto;
+      font-size: 15px;
+      overflow-x: scroll;
+   }
+}
     </style>
     </head>
     <body>
          
-        <header class="header">
-            <a id="userlink" class="account1" href="">Username</a>
-            <a id="signoutlink" class="account2" href="">Sign Out</a>
-        </header>
-        <div class="navbar" id="myNavbar">
+        <header class="header"></header>
+        <nav class="navbar" id="myNavbar">
            <ul>
-              <li><a href="./index.html">Home</a></li>
+              <li><a href="./topic1.html">Home</a></li>
               <li><a href="./quiz1.html">Quiz</a></li>
               <li><a href="./flashcard1.html">Flashcard</a></li>
               <li><a href="./q&a.html">Q&A</a></li>
               <li><a href="#contact">Contact us</a></li>
+              <li><a href="javascript:void(0);" id="profile" class="account" onclick="openSetting()">
+               <i class="fa fa-user-circle"></i></a></li>
               <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
                  <i class="fa fa-bars"></i></a></li>
            </ul>
+        </nav>
+
+        <div id="wrapper" class="sub_menu_container">
+         <div id="sub_menu" class="sub_menu">
+               <a id="userlink"  href="">Username</a>
+               <a id="signoutlink"  href="">Sign Out</a>
+         </div>
         </div>
         
         <nav id="myTable" class="toc_container">
             <ul style="list-style-type: none;" class="title_list">
-                <li><a href="./topic1.html">Extracting</a></li>
-                <li><a href="./topic2.html">Inlining</a></li>
-                <li><a href="./topic3.html">Removing</a></li>
-                <li><a href="./topic4.html" class="active">Changing</a></li>
-                <li><a href="./topic5.html">Introducing</a></li>
-                <li><a href="./topic6.html">Hiding</a></li>
-                <li><a href="./topic6.html">Encapsulating</a></li>
-                <li><a href="./topic6.html">Replacing</a></li>
-                <li><a href="./topic6.html">Consolidating</a></li>
-                <li><a href="./topic6.html">Pulling up</a></li>
-                <li><a href="./topic6.html">Pushing down</a></li>
-                <li><a href="./topic6.html">Additional 1</a></li>
-                <li><a href="./topic6.html">Additional 2</a></li>
+               <li><a href="./topic1.html">Extracting</a></li>
+               <li><a href="./topic2.html">Inlining</a></li>
+               <li><a href="./topic3.html">Removing</a></li>
+               <li><a href="./topic4.html" class="active">Changing</a></li>
+               <li><a href="./topic5.html">Introducing</a></li>
+               <li><a href="./topic6.html">Hiding</a></li>
+               <li><a href="./topic7.html">Encapsulating</a></li>
+               <li><a href="./topic8.html">Replacing</a></li>
+               <li><a href="./topic9.html">Consolidating</a></li>
+               <li><a href="./topic10.html">Pulling up</a></li>
+               <li><a href="./topic11.html">Pushing down</a></li>
+               <li><a href="./topic12.html">Additional 1</a></li>
+               <li><a href="./topic13.html">Additional 2</a></li>
             </ul>
         </nav>
 
@@ -323,57 +393,57 @@ pre {
             <a href="./topic4.html" class="active">Changing</a>
             <a href="./topic5.html">Introducing</a>
             <a href="./topic6.html">Hiding</a>
-            <a href="./topic6.html">Encapsulating</a>
-            <a href="./topic6.html">Replacing</a>
-            <a href="./topic6.html">Consolidating</a>
-            <a href="./topic6.html">Pulling up</a>
-            <a href="./topic6.html">Pushing down</a>
-            <a href="./topic6.html">Additional 1</a>
-            <a href="./topic6.html">Additional 2</a>
+            <a href="./topic7.html">Encapsulating</a>
+            <a href="./topic8.html">Replacing</a>
+            <a href="./topic9.html">Consolidating</a>
+            <a href="./topic10.html">Pulling up</a>
+            <a href="./topic11.html">Pushing down</a>
+            <a href="./topic12.html">Additional 1</a>
+            <a href="./topic13.html">Additional 2</a>
          </div>
        </div>
 
 
         <!--Main content-->
         <div class="content_box">
-         <h1 class="title">Changing Methods</h1>
-         <p style="font-style:italic">Last updated: 11/17/2022</p>
+         <h1 class="title">Inlining Methods</h1>
+         <p style="font-style:italic">Last updated: 11/21/2022</p>
          <hr class="line">
-            <h2>✫ Extract Method</h2>
+            <h2>✫ Inline Method</h2>
                <h3>Problem</h3>
-                  <p> You have a code fragment that can be grouped together. </p>
+                  <p> When a method body is more obvious than the method itself. </p>
                   <pre>
 
-   void printOwing() {
-      printBanner();
-      
-      // Print details.
-      System.out.println("name: " + name);
-      System.out.println("amount: " + getOutstanding());
+   class Discount {
+      // do something
+      int getDiscountPercent() {
+         return moreThanTwoSimilarItemsBought() ? 30 : 5;
+      }
+      boolean moreThanTwoSimilarItemsBought() {
+         return numberOfSimilarItemsBought > 2;
+      }
    }
+                  
                   </pre>
                <h3>Solution</h3>
-                  <p> Move this code to a separate new method (or function) and replace the old code with a call to the method.</p>
+                  <p> Remove the method itself and replace any calls with the method's content.</p>
                   <pre>
 
-   void printOwing() {
-      printBanner();
-      <code>printDetails(getOutstanding());</code>
+   class Discount {
+      // do something
+      int getDiscountPercent() {
+         <code>return numberOfSimilarItemsBought > 2 ? 30 : 5;</code>
+      }
    }
-      
-      <code>void printDetails(double outstanding) {
-      System.out.println("name: " + name);
-      System.out.println("amount: " + outstanding);
-   }</code>
 
 </pre>
-               <h3>When to use</h3>
-                  <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
-                     Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>       
+               <h3>Why refactor?</h3>
+                  <p>A method only transfers control to another method. This delegation poses no issues in and of itself. However, when there are numerous such ways, 
+                     they combine to form a jumble that is challenging to sort through. </p>       
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
-                     <h2>✫ Extract Variable </h2>
+<br><h2>✫ Extract Variable </h2>
             <h3>Problem</h3>
-               <p> You have an expression that's hard to understand. </p>
+               <p> You have a difficult-to-understand expression. </p>
                <pre>
 
    void renderBanner() {
@@ -387,24 +457,24 @@ pre {
 
                </pre>
             <h3>Solution</h3>
-               <p> Place the result of the expression or its parts in separate variables that are self-explanatory.</p>
+               <p> Place the outcome of the expression or its parts in self-explanatory variables.</p>
                <pre>
 
-      void renderBanner() {
-         <code>final boolean isMacOs = platform.toUpperCase().indexOf("MAC") > -1;
-         final boolean isIE = browser.toUpperCase().indexOf("IE") > -1;
-         final boolean wasResized = resize > 0;</code>
-         
-         if (isMacOs && isIE && wasInitialized() && wasResized) {
-            // do something
-         }
+   void renderBanner() {
+      <code>final boolean isMacOs = platform.toUpperCase().indexOf("MAC") > -1;
+      final boolean isIE = browser.toUpperCase().indexOf("IE") > -1;
+      final boolean wasResized = resize > 0;</code>
+      
+      if (isMacOs && isIE && wasInitialized() && wasResized) {
+         // do something
       }
+   }
 
                </pre>
-            <h3>When to use</h3>
-               <p>The main reason for extracting variables is to make a complex expression more understandable, by dividing it into its intermediate parts. </p> 
+            <h3>Why refactor?</h3>
+               <p>The fundamental rationale for extracting variables is to simplify a complex expression by separating it into intermediate sections. </p> 
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->           
-               <h2>✫ Extract Class </h2>
+<br><h2>✫ Extract Class </h2>
                   <h3>Problem</h3>
                      <p> When one class does the work of two, awkwardness results. </p>
                      <pre>
@@ -424,7 +494,7 @@ pre {
 
                      </pre>
                   <h3>Solution</h3>
-                     <p> Instead, create a new class and place the fields and methods responsible for the relevant functionality in it.</p>
+                     <p> Instead, make a new class and include the properties and methods that are responsible for the required functionality.</p>
                      <pre>
 
    void student() {
@@ -445,13 +515,33 @@ pre {
    }</code>
 
                      </pre>
-                  <h3>When to use</h3>
-                     <p>Classes always start out clear and easy to understand. They do their job and mind their own business as it were, without
-                        butting into the work of other classes. But as the program expands, a method is added and then a field... and eventually, 
-                        some classes are performing more responsibilities than ever envisioned.</p>
+                  <h3>Why refactor?</h3>
+                     <p>Classes are always clear and simple to understand at the start. They do their job and keep to themselves, so to speak, without interfering with 
+                        the work of other classes. However, as the software grows, a method, then a field... and soon, certain classes are executing more tasks than anyone
+                         could have imagined.</p>
                     
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
-               <h2>✫ Extract Subclass/Superclass/Interface</h2>
+<br><h2>✫ Extract Subclass</h2>
+               <h3>Problem</h3>
+                  <p> A class has features that are used only in certain cases. </p>
+                  <pre>
+                     
+   // updating 
+
+                  </pre>
+               <h3>Solution</h3>
+                  <p> In these cases, create a subclass and utilize it.</p>
+                  <pre>
+
+   // updating 
+
+                  </pre>
+               <h3>Why refactor?</h3>
+                  <p>When two classes do identical tasks in the same way or in different ways, this is an example of code duplication. Objects have an in-built mechanism for 
+                     simplifying such situations through inheritance. However, this resemblance is frequently overlooked until classes are introduced, forcing the 
+                     creation of an inheritance structure subsequently.</p>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<br><h2>✫ Extract Superclass</h2>
                <h3>Problem</h3>
                   <p> You have two classes with common fields and methods. </p>
                   <pre>
@@ -466,12 +556,39 @@ pre {
    // updating 
 
                   </pre>
-               <h3>When to use</h3>
-                  <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
-                     Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>
+               <h3>Why refactor?</h3>
+                  <p>One type of code duplication occurs when two classes perform similar tasks in the same way, or perform similar tasks in different ways. Objects offer a 
+                     built-in mechanism for simplifying such situations via inheritance. But oftentimes this similarity remains unnoticed until classes are created, necessitating
+                      that an inheritance structure be created later.</p>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<br><h2>✫ Extract Interface</h2>
+               <h3>Problem</h3>
+                  <p> Multiple clients are using the same part of a class interface. Another case: part of the interface in two classes is the same. </p>
+                  <pre>
+                     
+   // updating 
+
+                  </pre>
+               <h3>Solution</h3>
+                  <p> Move this identical portion to its own interface.</p>
+                  <pre>
+
+   // updating 
+
+                  </pre>
+               <h3>Why refactor?</h3>
+                  <p>When you need to define how a class interacts with its server. If it is intended to allow the usage of several types of servers in the future, 
+                     all servers must implement the interface.</p>
         </div>
+
+         <div class="footage" id="contact">
+            <p>Minh Luong: MinhHienLuong@my.unt.edu</p>
+            <p>Nhi Ha: NgocYenNhiHa@my.unt.edu</p>
+         </div>
         
         <script>
+
+         //Function to trigger responsiveness of navbar
            function myFunction() { 
               var x = document.getElementById("myNavbar");
               if (x.className === "navbar") {
@@ -482,13 +599,46 @@ pre {
               }
            }
 
+           //Open the overlay menu
            function openNav() {
             document.getElementById("myOverlay").style.width = "100%";
            }
 
+           //Close the overlay menu
            function closeNav() {
             document.getElementById("myOverlay").style.width = "0%";
            }
+
+           //Toogle account settings
+           function openSetting(){
+               document.getElementById("sub_menu").classList.toggle("show");
+            }
+
+            //Close the account settings when the user clicks outside 
+            window.onclick = function(event) { 
+            if (!event.target.closest('.account')) {
+               var dropdowns = document.getElementsByClassName("sub_menu");
+               var i;
+               for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                  }
+               }
+            }
+            }
+
+
+            //Adjust the sub menu position when scrolling down
+            window.addEventListener("scroll", function(event) {
+               var scroll = this.scrollY;
+               if (scroll > 50){
+                  document.getElementById("wrapper").style.top = "80px";
+               }
+               else {
+                  document.getElementById("wrapper").style.top = "200px";
+               }
+            })
 
            // References
         let userLink = document.getElementById('userlink');
@@ -519,27 +669,19 @@ pre {
             getUsername();
             if(currentUser == null) {
                 userLink.innerText = "Register";
-                userLink.classList.replace("account1", "account1");
                 userLink.href = "registration.html";
 
                 signoutLink.innerText = "Login";
-                signoutLink.classList.replace("account2", "account2");
                 signoutLink.href = "login.html";
             } else {
                 userLink.innerText = currentUser.username;
-                userLink.classList.replace("account1", "account1");
                 userLink.href = "#";
 
                 signoutLink.innerText = "Sign Out";
-                signoutLink.classList.replace("account2", "account2");
                 signoutLink.href = "javascript:Signout()";
             }
         }
 
         </script>
-  
-  
-  
      </body>
-
 </html>
