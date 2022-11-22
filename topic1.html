@@ -42,6 +42,7 @@ header a{
 
 .navbar a.active {
     background-color: #A46EE8;
+    border-radius: 10px;
     color: white;
 }
 
@@ -103,11 +104,10 @@ header a{
     top: 5.5rem;
     left: 0;
     width: 15%;
-    height: 40rem;
+    height: 45rem;
     background-color: white;
-    overflow-y: scroll;
-    scrollbar-color: grey;
-    scrollbar-width: thin;
+    border-right: solid;
+    border-color: #A46EE8;
   }
 
   .title{
@@ -139,7 +139,7 @@ header a{
 
   .content_box{
     position: relative;
-    top: -40rem;
+    top: -46rem;
     left: 20%;
     width: 75%;
     z-index: 0;
@@ -213,7 +213,7 @@ header a{
 }
 
 h2{
-   font-size: 30px;
+   font-size: 40px;
    color: #A46EE8;
 }
 
@@ -242,7 +242,6 @@ pre {
       font-size: 25px;
       display: block;
       padding: 10px;
-      text-align: center;
    }
 
 /*Add media quesries for responsive navigation bar*/
@@ -277,7 +276,7 @@ pre {
    .overlay_icon a {display: none;}
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
    .toc_container {display: none;}
    .content_box {
      position: relative;
@@ -299,7 +298,10 @@ pre {
    .navbar{
       position: relative;
    }
-   
+   .footage {
+      margin-top: 100px;
+      font-size: 15px;
+   }
   }
 
 @media screen and (max-height: 450px) {
@@ -335,8 +337,7 @@ pre {
     </head>
     <body>
          
-        <header class="header">     
-        </header>
+        <header class="header"></header>
         <nav class="navbar" id="myNavbar">
            <ul>
               <li><a href="./index.html">Home</a></li>
@@ -410,7 +411,7 @@ pre {
          <hr class="line">
             <h2>✫ Extract Method</h2>
                <h3>Problem</h3>
-                  <p> You have a code fragment that can be grouped together. </p>
+                  <p> You have a code fragment that can be combined. </p>
                   <pre>
 
    void printOwing() {
@@ -422,7 +423,7 @@ pre {
    }
                   </pre>
                <h3>Solution</h3>
-                  <p> Move this code to a separate new method (or function) and replace the old code with a call to the method.</p>
+                  <p> Put this code in a distinct new method (or function) and call the new method instead of the previous code.</p>
                   <pre>
 
    void printOwing() {
@@ -436,13 +437,13 @@ pre {
    }</code>
 
 </pre>
-               <h3>When to use</h3>
-                  <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
-                     Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>       
+               <h3>Why refactor?</h3>
+                  <p>The more lines in a method, the more difficult it is to determine what the method performs. This is the primary motivation behind this refactoring. 
+                     Extracting methods is a step in many other refactoring procedures in addition to reducing rough edges in your code.</p>       
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
-                     <h2>✫ Extract Variable </h2>
+<br><h2>✫ Extract Variable </h2>
             <h3>Problem</h3>
-               <p> You have an expression that's hard to understand. </p>
+               <p> You have a difficult-to-understand expression. </p>
                <pre>
 
    void renderBanner() {
@@ -456,7 +457,7 @@ pre {
 
                </pre>
             <h3>Solution</h3>
-               <p> Place the result of the expression or its parts in separate variables that are self-explanatory.</p>
+               <p> Place the outcome of the expression or its parts in self-explanatory variables.</p>
                <pre>
 
    void renderBanner() {
@@ -470,10 +471,10 @@ pre {
    }
 
                </pre>
-            <h3>When to use</h3>
-               <p>The main reason for extracting variables is to make a complex expression more understandable, by dividing it into its intermediate parts. </p> 
+            <h3>Why refactor?</h3>
+               <p>The fundamental rationale for extracting variables is to simplify a complex expression by separating it into intermediate sections. </p> 
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->           
-               <h2>✫ Extract Class </h2>
+<br><h2>✫ Extract Class </h2>
                   <h3>Problem</h3>
                      <p> When one class does the work of two, awkwardness results. </p>
                      <pre>
@@ -493,7 +494,7 @@ pre {
 
                      </pre>
                   <h3>Solution</h3>
-                     <p> Instead, create a new class and place the fields and methods responsible for the relevant functionality in it.</p>
+                     <p> Instead, make a new class and include the properties and methods that are responsible for the required functionality.</p>
                      <pre>
 
    void student() {
@@ -514,13 +515,33 @@ pre {
    }</code>
 
                      </pre>
-                  <h3>When to use</h3>
-                     <p>Classes always start out clear and easy to understand. They do their job and mind their own business as it were, without
-                        butting into the work of other classes. But as the program expands, a method is added and then a field... and eventually, 
-                        some classes are performing more responsibilities than ever envisioned.</p>
+                  <h3>Why refactor?</h3>
+                     <p>Classes are always clear and simple to understand at the start. They do their job and keep to themselves, so to speak, without interfering with 
+                        the work of other classes. However, as the software grows, a method, then a field... and soon, certain classes are executing more tasks than anyone
+                         could have imagined.</p>
                     
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
-               <h2>✫ Extract Subclass/Superclass/Interface</h2>
+<br><h2>✫ Extract Subclass</h2>
+               <h3>Problem</h3>
+                  <p> A class has features that are used only in certain cases. </p>
+                  <pre>
+                     
+   // updating 
+
+                  </pre>
+               <h3>Solution</h3>
+                  <p> In these cases, create a subclass and utilize it.</p>
+                  <pre>
+
+   // updating 
+
+                  </pre>
+               <h3>Why refactor?</h3>
+                  <p>When two classes do identical tasks in the same way or in different ways, this is an example of code duplication. Objects have an in-built mechanism for 
+                     simplifying such situations through inheritance. However, this resemblance is frequently overlooked until classes are introduced, forcing the 
+                     creation of an inheritance structure subsequently.</p>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<br><h2>✫ Extract Superclass</h2>
                <h3>Problem</h3>
                   <p> You have two classes with common fields and methods. </p>
                   <pre>
@@ -535,9 +556,29 @@ pre {
    // updating 
 
                   </pre>
-               <h3>When to use</h3>
-                  <p>The more lines found in a method, the harder it's to figure out what the method does. This is the main reason for this refactoring.<br><br>
-                     Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.</p>
+               <h3>Why refactor?</h3>
+                  <p>One type of code duplication occurs when two classes perform similar tasks in the same way, or perform similar tasks in different ways. Objects offer a 
+                     built-in mechanism for simplifying such situations via inheritance. But oftentimes this similarity remains unnoticed until classes are created, necessitating
+                      that an inheritance structure be created later.</p>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<br><h2>✫ Extract Interface</h2>
+               <h3>Problem</h3>
+                  <p> Multiple clients are using the same part of a class interface. Another case: part of the interface in two classes is the same. </p>
+                  <pre>
+                     
+   // updating 
+
+                  </pre>
+               <h3>Solution</h3>
+                  <p> Move this identical portion to its own interface.</p>
+                  <pre>
+
+   // updating 
+
+                  </pre>
+               <h3>Why refactor?</h3>
+                  <p>When you need to define how a class interacts with its server. If it is intended to allow the usage of several types of servers in the future, 
+                     all servers must implement the interface.</p>
         </div>
 
          <div class="footage" id="contact">
