@@ -144,6 +144,7 @@ header a{
     left: 20%;
     width: 75%;
     z-index: 0;
+    height: auto;
   }
 
   p{
@@ -159,7 +160,6 @@ header a{
    border-top: 1px solid black;
   }
 
- 
   .overlay_icon a{
       position: relative;
       top: 0;
@@ -235,15 +235,17 @@ pre {
 }
 
 .footage{
-      width: 100%;
-      height: 10rem;
-      margin-top: -25px;
-      background-color: #A46EE8;
-      color: white;
-      font-size: 25px;
-      display: block;
-      padding: 10px;
-   }
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   height: 10rem;
+   margin-top: -35rem;
+   background-color: #A46EE8;
+   color: white;
+   font-size: 25px;
+   display: block;
+   padding: 10px;
+}
 
 /*Add media quesries for responsive navigation bar*/
 @media screen and (max-width: 1000px){
@@ -332,6 +334,18 @@ pre {
       margin-right: auto;
       font-size: 15px;
       overflow-x: scroll;
+   }
+}
+
+@media screen and (max-height: 2200px) {
+   .toc_container {
+      height: 39.5rem;
+   }
+   .title_list a{
+      padding-top: 24px;
+   }
+   .content_box {
+      top: -40rem;
    }
 }
     </style>
