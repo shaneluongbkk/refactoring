@@ -77,6 +77,11 @@
         #cancel:hover {
             color: rgb(15, 59, 237);
         }
+
+        .labelregis {
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -84,14 +89,22 @@
 
     <div class="frame">
         <div class="title">Registration Form</div>
-        <input type="text" placeholder="Username" id="username" class="form-control mb-3">
-        <input type="text" placeholder="Email Address" id="email" class="form-control mb-3">
-        <input type="password" placeholder="Password" id="password" class="form-control mb-3">
-        <input type="password" placeholder="Confirmed Password" id="confirmpassword" class="form-control mb-3">
-        <input type="text" placeholder="First Name" id="firstname" class="form-control mb-3">
-        <input type="text" placeholder="Last Name" id="lastname" class="form-control mb-3">
+        <label class="labelregis">Username</label>
+        <input type="text" placeholder="abcxyz123" id="username" class="form-control mb-3">
+        <label class="labelregis">Email Address</label>
+        <input type="text" placeholder="refactoring@gmail.com" id="email" class="form-control mb-3">
+        <label class="labelregis">Password</label>
+        <input type="password" placeholder="**********" id="password" class="form-control mb-3">
+        <label class="labelregis">Confirmed Password</label>
+        <input type="password" placeholder="**********" id="confirmpassword" class="form-control mb-3">
+        <label class="labelregis">First Name</label>
+        <input type="text" placeholder="ABC" id="firstname" class="form-control mb-3">
+        <label class="labelregis">Last Name</label>
+        <input type="text" placeholder="XYZ" id="lastname" class="form-control mb-3">
+        <label class="labelregis">Date of Birth</label>
         <input type="date" id="dob" min="1900-01-01" max="2019-12-31" class="form-control mb-3">
-        <input type="text" placeholder="Zipcode" id="zipcode" class="form-control mb-3">
+        <label class="labelregis">Zipcode</label>
+        <input type="text" placeholder="00000-0000" id="zipcode" class="form-control mb-3">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
