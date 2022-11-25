@@ -2,6 +2,7 @@
 <html lang="en">
    <head>
       <meta name="viewport" content="width=device-width", initial-scale="1.0"> 
+      <title> Quiz 1: Extracting Methods </title>
       <link rel='stylesheet'  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
@@ -423,9 +424,9 @@ input{
             <li><a href="./flashcard1.html">Flashcard</a></li>
             <li><a href="./q&a.html">Q&A</a></li>
             <li><a href="#contact">Contact us</a></li>
-            <li><a href="javascript:void(0);" id="profile" class="account" onclick="openSetting()">
+            <li><a href="javascript:void(0);" aria-label="open sub-menu" id="profile" class="account" onclick="openSetting()">
               <i class="fa fa-user-circle"></i></a></li>
-            <li><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <li><a href="javascript:void(0);" aria-label="open navbar" class="icon" onclick="myFunction()">
                <i class="fa fa-bars"></i></a></li>
          </ul>
       </div>
@@ -457,7 +458,7 @@ input{
 
     <!--Full screen overlay menu for responsiveness-->
     <div class="overlay_icon">
-     <a href="javascript:void(0)"onclick="openNav()">
+     <a href="javascript:void(0);" aria-label="open overlay-menu" onclick="openNav()">
         <i class="fa fa-chevron-circle-right"></i></a>
     </div>
 
