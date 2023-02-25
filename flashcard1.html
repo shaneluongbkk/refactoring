@@ -278,10 +278,18 @@ body{
     width: 450px;
     height: 250px;
     margin-left: 10px;
+    margin-top: 60%;
   }
 
   .front {font-size: 20px;}
   .back {font-size: 20px;}
+   
+   .nextButton {
+     top: 40rem;
+   }
+   .backButton {
+     top: 40rem;
+   }
 }
 
  /*Add media quesries for responsive navigation bar*/
@@ -324,13 +332,14 @@ body{
    .overlay_icon a {display: none;}
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1100px) {
    .toc_container {display: none;}
    .content_box {
      position: relative;
      left: 15vw;
      top: 5vw;
    }
+   .navbar .account{display: none;}
    .title {font-size: 35px;}
    .nextButton {
      left: -30vw;
