@@ -206,7 +206,7 @@ body{
  /*Style for the flashcard */
 .card-container {
     position: absolute;
-    top: 250px;
+    top: 18rem;
     left: 45%;
     width: 600px;
     height: 300px;
@@ -249,7 +249,7 @@ body{
 
 .nextButton {
     position: absolute;
-    top: 27rem;
+    top: 30rem;
     left: 50vw;
     color: black;
     font-size: 30px;
@@ -257,7 +257,7 @@ body{
 
 .backButton {
     position: absolute;
-    top: 27rem;
+    top: 30rem;
     left: 16vw;
     color: black;
     font-size: 30px;
@@ -285,16 +285,17 @@ body{
     width: 450px;
     height: 250px;
     margin-left: 10px;
+    margin-top: -60px;
   }
 
   .front {font-size: 20px;}
   .back {font-size: 20px;}
    
    .nextButton {
-     top: 25rem;
+     top: 24rem;
    }
    .backButton {
-     top: 25rem;
+     top: 24rem;
    }
 }
 
@@ -333,6 +334,12 @@ body{
   right: 35px;
   }
 }
+   
+   @media screen and (max-height: 800px){
+  .content_box{
+    height: 20rem;
+  }
+}
 
   /*
   Do not display the open button for large screen.
@@ -347,30 +354,23 @@ body{
    .content_box {
      position: relative;
      left: 15vw;
-     margin-top: 70%;
+     top: 5vw;
    }
    .navbar .account{display: none;}
    .title {
    font-size: 2rem;
-   margin-top: 55vh;
+   margin-top: 1rem;
    }
    .nextButton {
-     left: 75%;
+     left: 70%;
    }
    .backButton {
-     left: 10%;
+     left: 17%;
    }
-  }
-
-  @media screen and (max-height: 2200px) {
-   .toc_container {
-      height: 39.5rem;
-   }
-   .title_list a{
-      padding-top: 24px;
-   }
-   .content_box {
-      top: -40rem;
+     
+    .footage {
+       margin-top: 75vh;
+       font-size: 20px;
    }
 }
 
